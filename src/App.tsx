@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 function App() {
   const arrValue: string[] = [
@@ -14,9 +14,14 @@ function App() {
     let randVal: number = Math.floor(Math.random() * arrValue.length);
     setValueRand(arrValue[randVal]);
   };
+  let day: Date = new Date();
+  let hour = day.getHours();
+  let minute = day.getMinutes();
+  let secon = day.getSeconds();
+
   return (
-    <div className="bg-gradient-to-r from-indigo-500 from-30% via-sky-500 via-50% to-emerald-500 to-80% relative bg-black">
-      <div className="absolute top-[18%] left-0 md:left-[25%] ml-auto text-center overflow-hidden text-lg w-full md:max-w-[450px] shrink-0 py-10 ">
+    <div className="bg-gradient-to-r from-indigo-500 from-30% via-sky-500 via-50% to-emerald-500 to-80% relative bg-black h-[100vh]">
+      <div className="absolute  top-0 left-0 md:left-[25%] ml-auto text-center overflow-hidden text-lg w-full md:max-w-[450px] shrink-0 py-10 ">
         <div className="z-40 p-2 border-2 border-dotted border-emerald-900 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <h1 className="font-mono text-orange-500 md:text-red-800">
             "Quày...Quày...Quay...Quay"
@@ -69,9 +74,18 @@ function App() {
                 value={valueRand}
               />
             ) : (
-              <p className="text-center">Kết quả sẽ hiện ở đâyyy</p>
+              <p className="text-center text-red-900 mt-4">
+                Kết quả sẽ hiện ở đâyyy
+              </p>
             )}
           </div>
+          {valueRand ? (
+            <p className="font-sans uppercase xl text-green-800 italic">
+              Time: {hour}:{minute}:{secon}
+            </p>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>
